@@ -37,3 +37,25 @@ function showPhysicist(){
 }
 //this is the first instance of displaying the physicist once the user loads into the page
 showPhysicist();
+
+//set the initial counter and player score to 0
+var playerscore = 0;
+var counter = 0;
+//adding an event listener to listen for clicks on the submit button
+    //target the form and add an even listener to the submit element
+var submission = getElementById('question');
+submission.addEventListener('submit', clickHandler);
+//function that compares the submitted answer to the correct answer
+    //increment the score if correct
+    //always append the image with the next physicist by incrementing the counter first
+function clickHandler(event){
+    event.preventDefault();
+    var answer = document.getElementById('answer');
+    var thePhysicist = document.getElementById(`${physicistArray[counter].name}`);
+
+    if (answer.value === thePhysicist.id){
+        playerscore++
+    }
+    counter++
+    showPhysicist();
+}
