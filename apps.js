@@ -1,6 +1,8 @@
 'use strict'
+
 //an empty array which will contain the physicist objects
 var physicistArray=[];
+
 //a constructor function which creates all of the physicist objects
     //each object will contain a name and imgPath property
 function CreatePhysicist (name, imgPath){
@@ -8,6 +10,7 @@ function CreatePhysicist (name, imgPath){
     this.imgPath = imgPath;
     physicistArray.push(this);
 };
+
 //these are all the physicist being created by instantiating the CreatePhysicist function
 var albertEinstein = new CreatePhysicist ('Albert Einstein', 'images/albertEinstein');
 var marieCurie = new CreatePhysicist('Marie Curie', 'images/marieCurie.jpg');
@@ -35,16 +38,19 @@ function showPhysicist(){
         }
     }
 }
+
 //this is the first instance of displaying the physicist once the user loads into the page
 showPhysicist();
 
 //set the initial counter and player score to 0
-var playerscore = 0;
+var playerScore = 0;
 var counter = 0;
+
 //adding an event listener to listen for clicks on the submit button
     //target the form and add an even listener to the submit element
 var submission = getElementById('question');
 submission.addEventListener('submit', clickHandler);
+
 //function that compares the submitted answer to the correct answer
     //increment the score if correct
     //always append the image with the next physicist by incrementing the counter first
@@ -54,8 +60,19 @@ function clickHandler(event){
     var thePhysicist = document.getElementById(`${physicistArray[counter].name}`);
 
     if (answer.value === thePhysicist.id){
-        playerscore++
+        playerScore++
     }
     counter++
     showPhysicist();
+}
+
+//function to store the score and the counter locally
+    //first it stringifys the content of the variables into coins
+    //then it stores those coins in local data
+function storeDataLocally(){
+    var counterStored = JSON.stringify(counter);
+    var scoreStored = JSON.stringify(playerScore);
+
+    localStorage.setItem('counter',counterStored);
+    localStorage.setItem('playerScore', scoreStored);
 }
