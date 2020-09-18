@@ -76,3 +76,9 @@ function storeDataLocally(){
     localStorage.setItem('counter',counterStored);
     localStorage.setItem('playerScore', scoreStored);
 }
+//a function that clears the display previously on the element labelled with the id "display images" 
+//replaces the img element with a blank element tag
+function clearContent(){
+    var thePhysicist = document.getElementById('displayImage');
+    thePhysicist.innerHTML = '';
+}
