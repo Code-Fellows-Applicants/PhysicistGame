@@ -63,6 +63,7 @@ function clickHandler(event){
         playerScore++
     }
     counter++
+    storeDataLocally();
     showPhysicist();
 }
 
@@ -81,4 +82,19 @@ function storeDataLocally(){
 function clearContent(){
     var thePhysicist = document.getElementById('displayImage');
     thePhysicist.innerHTML = '';
+}
+
+function finalScore(){
+    var gameArea = document.getElementById('game');
+    var gameInterface = document.getElementById('interface');
+    gameInterface.remove();
+
+    var finalImage = document.createElement('img');
+    finalImage.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Einstein_tongue.jpg/220px-Einstein_tongue.jpg';
+
+    var score = document.createElement('p');
+    score.textContent = `Your Score is: ${playerScore}`
+    score.id = 'finalScore';
+    gameArea.appendChild(score);
+    gameArea.appendChild(finalImage);
 }
