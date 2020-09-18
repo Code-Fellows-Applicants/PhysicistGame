@@ -49,7 +49,6 @@ function showPhysicist(){
 //this is the first instance of displaying the physicist once the user loads into the page
 showPhysicist();
 
-
 //adding an event listener to listen for clicks on the submit button
     //target the form and add an even listener to the submit element
 var submission = getElementById('question');
@@ -92,7 +91,8 @@ function clearContent(){
     var thePhysicist = document.getElementById('displayImage');
     thePhysicist.innerHTML = '';
 }
-
+//function to clear all the elements in the div labelled game
+    //replaces them with the score and the final image
 function finalScore(){
     var gameArea = document.getElementById('game');
     var gameInterface = document.getElementById('interface');
@@ -107,7 +107,7 @@ function finalScore(){
     gameArea.appendChild(score);
     gameArea.appendChild(finalImage);
 }
-
+//function to save the counter and score in local storage in order to persist the game
 function persistGameState(){
     if(localStorage.getItem('counter')){
         var counterParsed = localStorage.getItem('counter');
@@ -118,4 +118,15 @@ function persistGameState(){
         var scoreParsed = localStorage.getItem('score');
         playerScore = JSON.parse(scoreParsed);
     }
+}
+
+//attach an event listener to listen for clicks on the restart button
+var reset = document.getElementById('restart');
+reset.addEventListener('click', restartGame);
+//function to reset the counter and player score when the restart button is clicked 
+function restartGame(){
+    counter = 0;
+    playerScore = 0;
+    storeDataLocally();
+    location.reload();
 }
