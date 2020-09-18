@@ -1,7 +1,14 @@
-'use strict'
+'use strict';
 
 //an empty array which will contain the physicist objects
 var physicistArray=[];
+
+//set the initial counter and player score to 0
+var playerScore = 0;
+var counter = 0;
+
+//we need to persist the game state before anything in order to persist every state
+persistGameState();
 
 //a constructor function which creates all of the physicist objects
     //each object will contain a name and imgPath property
@@ -42,9 +49,6 @@ function showPhysicist(){
 //this is the first instance of displaying the physicist once the user loads into the page
 showPhysicist();
 
-//set the initial counter and player score to 0
-var playerScore = 0;
-var counter = 0;
 
 //adding an event listener to listen for clicks on the submit button
     //target the form and add an even listener to the submit element
@@ -64,6 +68,11 @@ function clickHandler(event){
     }
     counter++
     storeDataLocally();
+
+    if(counter === physicistArray.length){
+        finalScore();
+    }
+    clearContent();
     showPhysicist();
 }
 
@@ -97,4 +106,16 @@ function finalScore(){
     score.id = 'finalScore';
     gameArea.appendChild(score);
     gameArea.appendChild(finalImage);
+}
+
+function persistGameState(){
+    if(localStorage.getItem('counter')){
+        var counterParsed = localStorage.getItem('counter');
+        counter = JSON.parse(counterParsed);
+    }
+
+    if (localStorage.getItem('score')){
+        var scoreParsed = localStorage.getItem('score');
+        playerScore = JSON.parse(scoreParsed);
+    }
 }
