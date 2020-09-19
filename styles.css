@@ -3,7 +3,7 @@
     text-shadow: black;
 }
 body{
-    background-image : url('https://www.ias.edu/sites/default/files/black-hole.jpg');
+    background-image : url('/images/blackholeBackground.jpg');
     background-repeat : no-repeat;
     background-size : cover;
 }
@@ -46,7 +46,7 @@ h1{
     text-align : center;
     justify-content: center;
     text-emphasis : bold;
-    padding-bottom: 40px;
+    padding-bottom: 32px;
 }
 
 h2{
