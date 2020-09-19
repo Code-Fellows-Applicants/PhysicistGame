@@ -19,18 +19,18 @@ function CreatePhysicist (name, imgPath){
 };
 
 //these are all the physicist being created by instantiating the CreatePhysicist function
-var albertEinstein = new CreatePhysicist ('Albert Einstein', 'images/albertEinstein');
+var albertEinstein = new CreatePhysicist ('Albert Einstein', 'images/albertEinstein.jpg');
 var marieCurie = new CreatePhysicist('Marie Curie', 'images/marieCurie.jpg');
 var maxPlanck = new CreatePhysicist ('Max Planck', 'images/maxPlanck.jpg');
-var neilsBohr = new CreatePhysicist ('Neils Bohr', 'images/neilsBohr.jpg');
-var nikolaTesla = new CreatePhysicist('Isaac Newton', 'images/isaacNewton');
+var nielsBohr = new CreatePhysicist ('Niels Bohr', 'images/nielsBohr.jpg');
+var nikolaTesla = new CreatePhysicist('Isaac Newton', 'images/isaacNewton.jpg');
 var erwinSchrodinger = new CreatePhysicist ('Erwin Schrodinger', 'images/nikolaTesla.jpg');
-var stephenHawking = new CreatePhysicist('Stephen Hawking', 'images/stephenHawking');
+var stephenHawking = new CreatePhysicist('Stephen Hawking', 'images/stephenHawking.jpg');
 var wernerHeisenberg = new CreatePhysicist ('Werner Heisenberg','images/wernerHeisenberg.jpg');
 var michaelFaraday = new CreatePhysicist ('Michael Faraday', 'images/michaelFaraday.jpg');
 var paulDirac = new CreatePhysicist ('Paul Dirac', 'images/paulDirac.jpg');
 var jamesMaxwell = new CreatePhysicist('James Maxwell', 'images/jamesMaxwell.jpg');
-var juliusOppenheimer = new CreatePhysicist('Julius Oppenheimer', 'images/juliusOppenheimer');
+var juliusOppenheimer = new CreatePhysicist('Julius Oppenheimer', 'images/juliusOppenheimer.jpg');
 
 //this function will display the current physicists image on the div for the image
     //it creates an image element and appends the previous div labelled with the id "displayImage"
@@ -51,7 +51,7 @@ showPhysicist();
 
 //adding an event listener to listen for clicks on the submit button
     //target the form and add an even listener to the submit element
-var submission = getElementById('question');
+var submission = document.getElementById('question');
 submission.addEventListener('submit', clickHandler);
 
 //function that compares the submitted answer to the correct answer
@@ -65,14 +65,16 @@ function clickHandler(event){
     if (answer.value === thePhysicist.id){
         playerScore++
     }
-    counter++
+    counter++;
     storeDataLocally();
-
+    console.log(counter)
     if(counter === physicistArray.length){
         finalScore();
     }
-    clearContent();
-    showPhysicist();
+    if (counter< physicistArray.length){
+        clearContent();  
+    }
+        showPhysicist();
 }
 
 //function to store the score and the counter locally
@@ -90,6 +92,8 @@ function storeDataLocally(){
 function clearContent(){
     var thePhysicist = document.getElementById('displayImage');
     thePhysicist.innerHTML = '';
+    var userInput = document.getElementById('answer');
+    userInput.value = '';
 }
 //function to clear all the elements in the div labelled game
     //replaces them with the score and the final image
