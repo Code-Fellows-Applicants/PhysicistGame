@@ -3,7 +3,7 @@
     text-shadow: black;
 }
 body{
-    background-image : url('/images/blackholeBackground.jpg');
+    background: url('/blackholeBackground.jpg');
     background-repeat : no-repeat;
     background-size : cover;
 }
@@ -50,7 +50,7 @@ h1{
 }
 
 h2{
-    padding-top: 50px;
+    padding-top: 75px;
     text-align : center;
     font-size : 18pt;
     margin-left : 23%;
@@ -71,8 +71,16 @@ form{
     margin-left : 30%;
     margin-right : 30%;
 }
+
 input{
     font-size: 12pt;
+    background-color: black;
+    
+}
+
+#submit{
+    border: none;
+    
 }
 
 button{
@@ -92,16 +100,17 @@ img{
     position : center;
     justify-content : center;
     padding-bottom: 10pt;
-    width : 150px;
+    min-width: 150px;
     height : 150px;
 }
 
 li{
     list-style-type: none;
+
 }
 
 p{
-    padding-top: 50px;
+    padding-top: 60px;
     text-align : center;
     font-size : 14pt;
     margin-left : 38%;
