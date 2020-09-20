@@ -1,5 +1,4 @@
 'use strict';
-
 //an empty array which will contain the physicist objects
 var physicistArray=[];
 
